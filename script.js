@@ -1,3 +1,104 @@
+/* Урок 3 */
+/* Задача 1 */
+const lang = prompt("Введите язык: ru/en", "ru"); // Также есть button на странице
+
+if (lang === "ru") {
+	console.log("IF: Пн Вт Ср Чт Пт Сб Вс");
+} else if (lang === "en") {
+	console.log("IF: Mo Tu We Th Fr Sa Su");
+}
+
+switch (lang) {
+	case "ru":
+		console.log("SWITCH: Пн Вт Ср Чт Пт Сб Вс");
+		break;
+	case "en":
+		console.log("SWITCH: Mo Tu We Th Fr Sa Su");
+		break;
+}
+
+const Array = [
+	["ru", "ARRAY: Пн Вт Ср Чт Пт Сб Вс"],
+	["en", "ARRAY: Mo Tu We Th Fr Sa Su"],
+];
+console.log(Array.find((item) => item[0] === lang)[1]);
+
+// Решил добавить больше интерактива
+const btnLangRu = document.querySelector(".lesson03_ru");
+const btnLangEn = document.querySelector(".lesson03_en");
+
+const isToday = (lang) => {
+	const today = new Date();
+
+	if (lang === "ru") {
+		switch (today.getDay()) {
+			case 0:
+				console.log("Сегодня воскресенье");
+				break;
+			case 1:
+				console.log("Сегодня понедельник");
+				break;
+			case 2:
+				console.log("Сегодня вторник");
+				break;
+			case 3:
+				console.log("Сегодня среда");
+				break;
+			case 4:
+				console.log("Сегодня четверг");
+				break;
+			case 5:
+				console.log("Сегодня пятница");
+				break;
+			case 6:
+				console.log("Сегодня суббота");
+				break;
+		}
+	}
+
+	if (lang === "en") {
+		switch (today.getDay()) {
+			case 0:
+				console.log("Today is Sunday");
+				break;
+			case 1:
+				console.log("Today is Monday");
+				break;
+			case 2:
+				console.log("Today is Tuesday");
+				break;
+			case 3:
+				console.log("Today is Wednesday");
+				break;
+			case 4:
+				console.log("Today is Thursday");
+				break;
+			case 5:
+				console.log("Today is Friday");
+				break;
+			case 6:
+				console.log("Today is Saturday");
+				break;
+		}
+	}
+};
+
+btnLangRu.addEventListener("click", () => {
+	isToday("ru");
+});
+btnLangEn.addEventListener("click", () => {
+	isToday("en");
+});
+
+/* Задача 2 */
+const namePerson = prompt("Укажите имя: Артем/Александр/другое", "Артем");
+namePerson === "Артем"
+	? console.log("директор")
+	: namePerson === "Александр"
+	? console.log("преподаватель")
+	: console.log("студент");
+
+/* Урок 2
 let num = 266219;
 console.log(typeof num);
 
@@ -9,3 +110,4 @@ let sum =
 
 console.log(sum);
 console.log(sum.toString().slice(0, 2));
+ */
