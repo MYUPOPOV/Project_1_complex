@@ -1,6 +1,6 @@
 /* Урок 4 */
 const strReduce = (str) => {
-	if (typeof str !== typeof "string") {
+	if (typeof str !== "string") {
 		return "Передана не строка!";
 	} else if (str.trim().length > 30) {
 		return str.trim().slice(0, 30) + "...";
