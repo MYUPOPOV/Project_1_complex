@@ -1,5 +1,20 @@
-/* Урок 3 */
-/* Задача 1 */
+/* Урок 4 */
+const strReduce = (str) => {
+	if (typeof str !== typeof "string") {
+		return "Передана не строка!";
+	} else if (str.trim().length > 30) {
+		return str.trim().slice(0, 30) + "...";
+	} else {
+		return str.trim();
+	}
+};
+
+console.log(strReduce(prompt("Введите произвольный аргумент", "Строка")));
+
+// console.log(strReduce(arg));
+
+/* Урок 3 
+// Задача 1
 const lang = prompt("Введите язык: ru/en", "ru"); // Также есть button на странице
 
 if (lang === "ru") {
@@ -90,13 +105,14 @@ btnLangEn.addEventListener("click", () => {
 	isToday("en");
 });
 
-/* Задача 2 */
+//
 const namePerson = prompt("Укажите имя: Артем/Александр/другое", "Артем");
 namePerson === "Артем"
 	? console.log("директор")
 	: namePerson === "Александр"
 	? console.log("преподаватель")
 	: console.log("студент");
+  */
 
 /* Урок 2
 let num = 266219;
