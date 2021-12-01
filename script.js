@@ -1,4 +1,32 @@
-/* Урок 4 */
+/* Урок 5 */
+// Задание 1
+let arr = [];
+
+arr[0] = "firstNumber";
+arr[1] = "2ndNumber";
+arr[2] = "3dNumber";
+arr[3] = "4thNumber";
+arr[4] = "5thNumber";
+arr[5] = "sixthNumber";
+arr[6] = "7thNumber";
+
+arr.forEach((item) => {
+	if (item[0] == "2" || item[0] == "4") {
+		console.log(item);
+	}
+});
+
+// Задание 2
+nextIteration: for (i = 1; i <= 100; i++) {
+	for (j = 2; j < i ** (1 / 2); j++) {
+		if (i % j == 0) {
+			continue nextIteration;
+		}
+	}
+	console.log(i + " - простое число. Делители этого числа: 1 и " + i);
+}
+
+/* Урок 4 
 const strReduce = (str) => {
 	if (typeof str !== "string") {
 		return "Передана не строка!";
