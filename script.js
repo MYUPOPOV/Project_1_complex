@@ -2,13 +2,13 @@
 // Задание 1
 let arr = [];
 
-arr[0] = "firstNumber";
-arr[1] = "2ndNumber";
-arr[2] = "3dNumber";
-arr[3] = "4thNumber";
-arr[4] = "5thNumber";
-arr[5] = "sixthNumber";
-arr[6] = "7thNumber";
+arr[0] = "123";
+arr[1] = "2567";
+arr[2] = "3234324";
+arr[3] = "408796";
+arr[4] = "53458";
+arr[5] = "2379";
+arr[6] = "7989";
 
 arr.forEach((item) => {
 	if (item[0] == "2" || item[0] == "4") {
