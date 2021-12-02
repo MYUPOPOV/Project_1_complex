@@ -1,20 +1,16 @@
 /* Урок 6: Бот Угадай число */
 
-let x;
+let x = Math.floor(Math.random() * 99) + 1;
 let y;
-let count;
 
 const isNumber = function (num) {
 	return !isNaN(parseFloat(num)) && isFinite(num);
 };
 
-const checkValue = (x, count) => {
+const checkValue = (x) => {
 	y = prompt("Введите число от 1 до 100");
 	console.log("~ y", y);
-	console.log("~ попыток:", count);
-	if (count === 0) {
-		endGame();
-	}
+	// console.log(isNumber(y));
 
 	if (isNumber(y)) {
 		y = +y;
@@ -22,40 +18,23 @@ const checkValue = (x, count) => {
 			alert("Поздравляю!\nВы угадали загаданное число!");
 			console.log("Загаданное число: " + y);
 		} else if (y > x) {
-			count--;
-			alert("Ваше число больше X.\nПопробуйте снова\nОсталось " + count + " попыток");
-			checkValue(x, count);
-		} else if (y < x) {
-			count--;
-			alert("Ваше число меньше X.\nПопробуйте снова\nОсталось " + count + " попыток");
-			checkValue(x, count);
+			alert("Ваше число больше X.\nПопробуйте снова");
+			checkValue(x);
+		} else if (y < x && y > 0) {
+			alert("Ваше число меньше X.\nПопробуйте снова");
+			checkValue(x);
 		}
 	} else if (y === null) {
 		alert("Всё, приехали...\nИгра окончена.");
-		endGame();
 	} else {
 		alert("Я же просил число!");
-		checkValue(x, count);
+		checkValue(x);
 	}
 };
 
-const startGame = () => {
-	x = Math.floor(Math.random() * 99) + 1;
-	count = 10;
-	console.log("~ x", x);
-	alert("Привет! Я загадал случайное число X в интервале от 1 до 100. \nCейчас оно спрятано в логах консоли. Попробуй его отгадать.");
-	checkValue(x, count);
-};
-
-const endGame = () => {
-	if (confirm("Сыграем ещё?")) {
-		startGame();
-	} else {
-		alert("Ну хорошо\nПерезагрузите страницу если захотите сыграть ещё");
-	}
-};
-
-startGame();
+console.log("~ x", x);
+alert("Привет! Я загадал случайное число X в интервале от 1 до 100. \nCейчас оно спрятано в логах консоли. Попробуй его отгадать.");
+checkValue(x);
 
 /* Урок 5 
 // Задание 1
