@@ -45,7 +45,7 @@ const checkValue = (x, count) => {
 
 const startGame = () => {
 	x = Math.floor(Math.random() * 99) + 1;
-	count = 2;
+	count = 10;
 	console.log("~ x", x);
 	alert("Привет! Я загадал случайное число X в интервале от 1 до 100. \nCейчас оно спрятано в логах консоли. Попробуй его отгадать.");
 	checkValue(x, count);
