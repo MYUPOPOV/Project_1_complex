@@ -9,18 +9,22 @@ const isNumber = function (num) {
 };
 
 const checkValue = (x, count) => {
-	y = prompt("Введите число от 1 до 100");
-	console.log("~ y", y);
-	console.log("~ попыток:", count);
-	if (count === 0) {
+	if (count > 0) {
+		y = prompt("Введите число от 1 до 100");
+	} else {
+		y = "";
 		endGame();
 	}
+
+	console.log("~ y", y);
+	console.log("~ попыток:", count);
 
 	if (isNumber(y)) {
 		y = +y;
 		if (y === x) {
 			alert("Поздравляю!\nВы угадали загаданное число!");
 			console.log("Загаданное число: " + y);
+			endGame();
 		} else if (y > x) {
 			count--;
 			alert("Ваше число больше X.\nПопробуйте снова\nОсталось " + count + " попыток");
@@ -33,7 +37,7 @@ const checkValue = (x, count) => {
 	} else if (y === null) {
 		alert("Всё, приехали...\nИгра окончена.");
 		endGame();
-	} else {
+	} else if (typeof y === "string") {
 		alert("Я же просил число!");
 		checkValue(x, count);
 	}
@@ -41,7 +45,7 @@ const checkValue = (x, count) => {
 
 const startGame = () => {
 	x = Math.floor(Math.random() * 99) + 1;
-	count = 10;
+	count = 2;
 	console.log("~ x", x);
 	alert("Привет! Я загадал случайное число X в интервале от 1 до 100. \nCейчас оно спрятано в логах консоли. Попробуй его отгадать.");
 	checkValue(x, count);
