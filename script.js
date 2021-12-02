@@ -18,7 +18,7 @@ arr.forEach((item) => {
 
 // Задание 2
 nextIteration: for (i = 1; i <= 100; i++) {
-	for (j = 2; j < i ** (1 / 2); j++) {
+	for (j = 2; j < i; j++) {
 		if (i % j == 0) {
 			continue nextIteration;
 		}
