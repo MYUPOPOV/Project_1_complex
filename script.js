@@ -6,7 +6,7 @@ const weekHTML = document.querySelector(".week");
 // weekHTML.innerHTML = "Понедельник";
 
 week.forEach((item, index) => {
-	const daySpan = document.createElement("p");
+	const daySpan = document.createElement("div");
 	const today = new Date();
 	daySpan.innerHTML = item + " ";
 	if (index === today.getDay() - 1) {
