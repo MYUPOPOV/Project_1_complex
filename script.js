@@ -25,13 +25,16 @@ const checkValue = (x, count) => {
 			alert("Поздравляю!\nВы угадали загаданное число!");
 			console.log("Загаданное число: " + y);
 			endGame();
-		} else if (y > x) {
+		} else if (y > x && y <= 100) {
 			count--;
 			alert("Ваше число больше X.\nПопробуйте снова\nОсталось " + count + " попыток");
 			checkValue(x, count);
-		} else if (y < x) {
+		} else if (y < x && y >= 1) {
 			count--;
 			alert("Ваше число меньше X.\nПопробуйте снова\nОсталось " + count + " попыток");
+			checkValue(x, count);
+		} else if (y < 1 || y > 100) {
+			alert("Ваше число не от 1 до 100!");
 			checkValue(x, count);
 		}
 	} else if (y === null) {
