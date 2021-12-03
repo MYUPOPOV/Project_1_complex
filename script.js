@@ -7,9 +7,17 @@ const weekHTML = document.querySelector(".week");
 
 week.forEach((item, index) => {
 	const daySpan = document.createElement("div");
-	const today = new Date();
+	const today = new Date(2021, 11, 5);
+	let dayIndex = today.getDay();
+	if (dayIndex === 0) {
+		dayIndex = 7;
+	}
+
 	daySpan.innerHTML = item + " ";
-	if (index === today.getDay() - 1) {
+	// console.log("~ index", index);
+	// console.log("~ today.getDay()", today.getDay());
+	if (index === dayIndex - 1) {
+		console.log("совпадение");
 		daySpan.innerHTML = "<b>" + daySpan.innerHTML + "</b>";
 	}
 	if (index === 5 || index === 6) {
