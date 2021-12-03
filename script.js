@@ -12,8 +12,8 @@ const checkValue = (x, count) => {
 	if (count > 0) {
 		y = prompt("Введите число от 1 до 100");
 	} else {
-		y = "";
 		endGame();
+		y = "";
 	}
 
 	console.log("~ y", y);
@@ -41,14 +41,16 @@ const checkValue = (x, count) => {
 		alert("Всё, приехали...\nИгра окончена.");
 		endGame();
 	} else if (typeof y === "string") {
-		alert("Я же просил число!");
-		checkValue(x, count);
+		if (count >= 1) {
+			alert("Я же просил число!");
+			checkValue(x, count);
+		}
 	}
 };
 
 const startGame = () => {
 	x = Math.floor(Math.random() * 99) + 1;
-	count = 10;
+	count = 2;
 	console.log("~ x", x);
 	alert("Привет! Я загадал случайное число X в интервале от 1 до 100. \nCейчас оно спрятано в логах консоли. Попробуй его отгадать.");
 	checkValue(x, count);
