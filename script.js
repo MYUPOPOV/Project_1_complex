@@ -1,4 +1,31 @@
-/* Урок 6: Бот Угадай число */
+/* Урок 7. Дни недели */
+
+let week = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"];
+const weekHTML = document.querySelector(".week");
+
+// weekHTML.innerHTML = "Понедельник";
+
+week.forEach((item, index) => {
+	const daySpan = document.createElement("p");
+	const today = new Date();
+	daySpan.innerHTML = item + " ";
+	if (index === today.getDay() - 1) {
+		daySpan.innerHTML = "<b>" + daySpan.innerHTML + "</b>";
+	}
+	if (index === 5 || index === 6) {
+		daySpan.innerHTML = "<i>" + daySpan.innerHTML + "</i>";
+	}
+	weekHTML.append(daySpan);
+});
+
+// let str = "";
+
+// alert(str);
+
+// console.log(str);
+// console.log("~ array", week[2]);
+
+/* Урок 6: Бот Угадай число
 
 let x;
 let y;
