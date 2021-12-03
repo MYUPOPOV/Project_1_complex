@@ -18,13 +18,6 @@ week.forEach((item, index) => {
 	weekHTML.append(daySpan);
 });
 
-// let str = "";
-
-// alert(str);
-
-// console.log(str);
-// console.log("~ array", week[2]);
-
 /* Урок 6: Бот Угадай число
 
 let x;
