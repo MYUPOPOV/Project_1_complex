@@ -3,8 +3,6 @@
 let week = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"];
 const weekHTML = document.querySelector(".week");
 
-// weekHTML.innerHTML = "Понедельник";
-
 week.forEach((item, index) => {
 	const daySpan = document.createElement("div");
 	const today = new Date();
