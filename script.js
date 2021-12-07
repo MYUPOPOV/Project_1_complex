@@ -1,25 +1,143 @@
+/* Урок 8. Выводит текущей даты и времени */
+const date = new Date();
+
+const hourDeclension = (hour) => {
+	if ((hour >= 2 && hour <= 4) || (hour >= 22 && hour <= 23)) {
+		return "часа";
+	}
+	if ((hour >= 5 && hour <= 20) || hour === 0) {
+		return "часов";
+	}
+	if (hour === 1 || hour === 21) {
+		return "час";
+	}
+};
+
+const timeFormat = (value) => {
+	const str = String(value);
+	console.log("~ str1", str);
+	if (str.length == 1) {
+		str = Number("0" + str);
+		console.log("~ str2", str);
+	}
+};
+
+/* Получаем все компоненты даты и времени. return: string */
+const getTime = () => {
+	// В переменную dayOfWeek записываем день недели
+	let dayOfWeek;
+	switch (date.getDay()) {
+		case 0:
+			dayOfWeek = "Воскресенье";
+			break;
+		case 1:
+			dayOfWeek = "Понедельник";
+			break;
+		case 2:
+			dayOfWeek = "Вторник";
+			break;
+		case 3:
+			dayOfWeek = "Среда";
+			break;
+		case 4:
+			dayOfWeek = "Четверг";
+			break;
+		case 5:
+			dayOfWeek = "Пятница";
+			break;
+		case 6:
+			dayOfWeek = "Суббота";
+			break;
+	}
+	console.log("~ dayOfWeek:", dayOfWeek);
+	// В переменную dayOfWeek записываем день недели ~
+
+	const dayOfMonth = date.getDate(); // сегодняшнее число
+	console.log("~ dayOfMonth", dayOfMonth);
+
+	// В переменную month записываем текущий месяц
+	let month;
+	switch (date.getMonth()) {
+		case 0:
+			month = "января";
+			break;
+		case 1:
+			month = "февраля";
+			break;
+		case 2:
+			month = "марта";
+			break;
+		case 3:
+			month = "апреля";
+			break;
+		case 4:
+			month = "мая";
+			break;
+		case 5:
+			month = "июня";
+			break;
+		case 6:
+			month = "июля";
+			break;
+		case 7:
+			month = "августа";
+			break;
+		case 8:
+			month = "сентября";
+			break;
+		case 9:
+			month = "октября";
+			break;
+		case 10:
+			month = "ноября";
+			break;
+		case 11:
+			month = "декабря";
+			break;
+	}
+	console.log("~ month", month);
+	// В переменную month записываем текущий месяц ~
+
+	const year = date.getFullYear(); // сегодняшнее число
+	console.log("~ year", year);
+
+	const hour = date.getHours(); // текущий час
+	const hourDecl = hourDeclension(hour);
+	console.log("~ hour", hour);
+	console.log("~ hourDeclension", hourDecl);
+
+	const minutes = date.getMinutes(); // текущая минута
+	console.log("~ minutes", minutes);
+
+	timeFormat(minutes);
+
+	const secunds = date.getSeconds(); // текущая минута
+	console.log("~ secunds", secunds);
+};
+
+getTime();
+
 /* Урок 7. Дни недели */
+// let week = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"];
+// const weekHTML = document.querySelector(".week");
 
-let week = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"];
-const weekHTML = document.querySelector(".week");
+// week.forEach((item, index) => {
+// 	const daySpan = document.createElement("div");
+// 	const today = new Date();
+// 	let dayIndex = today.getDay();
+// 	if (dayIndex === 0) {
+// 		dayIndex = 7;
+// 	}
 
-week.forEach((item, index) => {
-	const daySpan = document.createElement("div");
-	const today = new Date();
-	let dayIndex = today.getDay();
-	if (dayIndex === 0) {
-		dayIndex = 7;
-	}
-
-	daySpan.innerHTML = item + " ";
-	if (index === dayIndex - 1) {
-		daySpan.innerHTML = "<b>" + daySpan.innerHTML + "</b>";
-	}
-	if (index === 5 || index === 6) {
-		daySpan.innerHTML = "<i>" + daySpan.innerHTML + "</i>";
-	}
-	weekHTML.append(daySpan);
-});
+// 	daySpan.innerHTML = item + " ";
+// 	if (index === dayIndex - 1) {
+// 		daySpan.innerHTML = "<b>" + daySpan.innerHTML + "</b>";
+// 	}
+// 	if (index === 5 || index === 6) {
+// 		daySpan.innerHTML = "<i>" + daySpan.innerHTML + "</i>";
+// 	}
+// 	weekHTML.append(daySpan);
+// });
 
 /* Урок 6: Бот Угадай число
 
