@@ -1,6 +1,13 @@
 /* Урок 8. Выводит текущей даты и времени */
 const date = new Date();
+let Now;
+const stringA = document.querySelector(".string_a");
 
+const stringB = document.querySelector(".string_b");
+
+// const date = new Date(2021, 11, 7, 13, 21, 5);
+
+/* Склоняем слово "час" */
 const hourDeclension = (hour) => {
 	if ((hour >= 2 && hour <= 4) || (hour >= 22 && hour <= 23)) {
 		return "часа";
@@ -13,16 +20,72 @@ const hourDeclension = (hour) => {
 	}
 };
 
-const timeFormat = (value) => {
-	const str = String(value);
-	console.log("~ str1", str);
-	if (str.length == 1) {
-		str = Number("0" + str);
-		console.log("~ str2", str);
+/* Склоняем слово "минута" */
+const minutesDeclension = (minutes) => {
+	if (minutes === 1 || minutes === 21 || minutes === 31 || minutes === 41 || minutes === 51) {
+		return "минута";
+	}
+	if (
+		(minutes >= 2 && minutes <= 4) ||
+		(minutes >= 22 && minutes <= 24) ||
+		(minutes >= 32 && minutes <= 34) ||
+		(minutes >= 42 && minutes <= 44) ||
+		(minutes >= 52 && minutes <= 54)
+	) {
+		return "минуты";
+	}
+
+	if (
+		minutes === 0 ||
+		(minutes >= 5 && minutes <= 20) ||
+		(minutes >= 25 && minutes <= 30) ||
+		(minutes >= 35 && minutes <= 40) ||
+		(minutes >= 45 && minutes <= 50) ||
+		(minutes >= 55 && minutes <= 60)
+	) {
+		return "минут";
 	}
 };
+/* Склоняем слово "минута" ~ */
 
-/* Получаем все компоненты даты и времени. return: string */
+/* Склоняем слово "секунда" */
+const secundsDeclension = (secunds) => {
+	if (secunds === 1 || secunds === 21 || secunds === 31 || secunds === 41 || secunds === 51) {
+		return "секунда";
+	}
+	if (
+		(secunds >= 2 && secunds <= 4) ||
+		(secunds >= 22 && secunds <= 24) ||
+		(secunds >= 32 && secunds <= 34) ||
+		(secunds >= 42 && secunds <= 44) ||
+		(secunds >= 52 && secunds <= 54)
+	) {
+		return "секунды";
+	}
+
+	if (
+		secunds === 0 ||
+		(secunds >= 5 && secunds <= 20) ||
+		(secunds >= 25 && secunds <= 30) ||
+		(secunds >= 35 && secunds <= 40) ||
+		(secunds >= 45 && secunds <= 50) ||
+		(secunds >= 55 && secunds <= 60)
+	) {
+		return "секунд";
+	}
+};
+/* Склоняем слово "секунда" ~ */
+
+/* Форматируем отображение духзначных чисел */
+const timeFormat = (value) => {
+	let str = String(value);
+	if (str.length == 1) {
+		str = "0" + str;
+	}
+	return str;
+};
+
+/* Получаем все компоненты даты и времени. return: array[string1, string2] */
 const getTime = () => {
 	// В переменную dayOfWeek записываем день недели
 	let dayOfWeek;
@@ -108,14 +171,51 @@ const getTime = () => {
 
 	const minutes = date.getMinutes(); // текущая минута
 	console.log("~ minutes", minutes);
-
-	timeFormat(minutes);
+	const minutesDecl = minutesDeclension(minutes);
+	console.log("~ minutesDecl", minutesDecl);
 
 	const secunds = date.getSeconds(); // текущая минута
 	console.log("~ secunds", secunds);
+	const secundsDecl = secundsDeclension(secunds);
+	console.log("~ secundsDecl", secundsDecl);
+
+	// Отформатированные переменные для string2
+	const dayOfMonthFormat = timeFormat(dayOfMonth);
+	const monthFormat = timeFormat(date.getMonth() + 1);
+	const hourFormat = timeFormat(hour);
+	const minutesFormat = timeFormat(minutes);
+	const secundsFormat = timeFormat(secunds);
+
+	const string1 =
+		"Сегодня " +
+		dayOfWeek +
+		", " +
+		dayOfMonth +
+		" " +
+		month +
+		" " +
+		year +
+		" года, " +
+		hour +
+		" " +
+		hourDecl +
+		" " +
+		minutes +
+		" " +
+		minutesDecl +
+		" " +
+		secunds +
+		" " +
+		secundsDecl;
+	const string2 = dayOfMonthFormat + "." + monthFormat + "." + year + " - " + hourFormat + ":" + minutesFormat + ":" + secundsFormat;
+
+	return [string1, string2];
 };
 
-getTime();
+Now = getTime();
+console.log("~ Now", Now);
+stringA.innerHTML = Now[0];
+stringB.innerHTML = Now[1];
 
 /* Урок 7. Дни недели */
 // let week = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"];
