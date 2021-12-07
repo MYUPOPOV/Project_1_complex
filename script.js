@@ -1,11 +1,7 @@
 /* Урок 8. Выводит текущей даты и времени */
-const date = new Date();
 let Now;
 const stringA = document.querySelector(".string_a");
-
 const stringB = document.querySelector(".string_b");
-
-// const date = new Date(2021, 11, 7, 13, 21, 5);
 
 /* Склоняем слово "час" */
 const hourDeclension = (hour) => {
@@ -62,7 +58,6 @@ const secundsDeclension = (secunds) => {
 	) {
 		return "секунды";
 	}
-
 	if (
 		secunds === 0 ||
 		(secunds >= 5 && secunds <= 20) ||
@@ -85,8 +80,11 @@ const timeFormat = (value) => {
 	return str;
 };
 
-/* Получаем все компоненты даты и времени. return: array[string1, string2] */
+/* Получаем все компоненты текущей даты и времени. return: array[string1, string2] */
 const getTime = () => {
+	const date = new Date();
+	// const date = new Date(2021, 11, 7, 13, 21, 5);
+
 	// В переменную dayOfWeek записываем день недели
 	let dayOfWeek;
 	switch (date.getDay()) {
@@ -212,10 +210,16 @@ const getTime = () => {
 	return [string1, string2];
 };
 
-Now = getTime();
-console.log("~ Now", Now);
-stringA.innerHTML = Now[0];
-stringB.innerHTML = Now[1];
+/* Отрисовываем время */
+const renderTime = () => {
+	getTime();
+	Now = getTime();
+	stringA.innerHTML = Now[0];
+	stringB.innerHTML = Now[1];
+};
+
+// Запускаем :)
+let timerId = setInterval(renderTime, 1000);
 
 /* Урок 7. Дни недели */
 // let week = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"];
