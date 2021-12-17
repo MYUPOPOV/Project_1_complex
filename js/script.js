@@ -9,12 +9,13 @@ class First {
 
 class Second extends First {
 	hello() {
-		console.log("Привет, я метод родителя!");
+		super.hello();
+		console.log("А я наследуемый метод!");
 	}
 }
 
 const classVar = new Second();
-console.log("~ classVar", classVar);
+classVar.hello();
 
 /* Урок 8. Выводит текущей даты и времени 
 см. в файле renderTime.js
