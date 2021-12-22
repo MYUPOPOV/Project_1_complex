@@ -89,12 +89,6 @@ const getTime = () => {
 	let days = Math.floor((dateStop - dateNow) / (3600000 * 24));
 	const string4 = `До Нового года осталось ${days} дней`;
 
-	// ${}
-
-	// const string1 = "Сегодня " + dayOfWeek + ", " + dayOfMonth + " " + month + " " + year + " года, " + hour + " " + hourDecl + " " + minutes + " " + minutesDecl + " " + secunds + " " + secundsDecl;
-	// const string2 = dayOfMonthFormat + "." + monthFormat + "." + year + " - " + hourFormat + ":" + minutesFormat + ":" + secundsFormat;
-
-	// return [string1, string2, string3, string4];
 	return [string1, string2, string3, string4];
 };
 

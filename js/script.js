@@ -1,4 +1,45 @@
-/* Урок 16. Прототипы и классы */
+/* Урок 19: Скрипты и время выполнения */
+
+const input = document.querySelector(".input_a");
+console.log("~ input", input);
+const p = document.querySelector(".paragraph_a");
+console.log("~ p", p);
+
+const changeText = () => {
+	p.textContent = input.value;
+};
+
+const throttle = function (func, ms) {
+	let isThrottled = false,
+		savedArgs,
+		savedThis;
+
+	function wrapper() {
+		if (isThrottled) {
+			savedArgs = arguments;
+			savedThis = this;
+			return;
+		}
+
+		func.apply(this, arguments);
+
+		isThrottled = true;
+
+		setTimeout(function () {
+			isThrottled = false;
+			if (savedArgs) {
+				wrapper.apply(savedThis, savedArgs);
+				savedArgs = savedThis = null;
+			}
+		}, ms);
+	}
+
+	return wrapper;
+};
+
+input.addEventListener("input", throttle(changeText, 300));
+
+/* Урок 16. Прототипы и классы 
 "use strict";
 
 class First {
@@ -15,8 +56,7 @@ class Second extends First {
 }
 
 const classVar = new Second();
-classVar.hello();
-
+classVar.hello(); */
 /* Урок 8. Выводит текущей даты и времени 
 см. в файле renderTime.js
 
