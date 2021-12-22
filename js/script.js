@@ -1,9 +1,6 @@
 /* Урок 19: Скрипты и время выполнения */
-
 const input = document.querySelector(".input_a");
-console.log("~ input", input);
 const p = document.querySelector(".paragraph_a");
-console.log("~ p", p);
 
 const changeText = () => {
 	p.textContent = input.value;
