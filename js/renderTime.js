@@ -64,7 +64,7 @@ const getTime = () => {
 	const minutesFormat = timeFormat(minutes);
 	const secundsFormat = timeFormat(secunds);
 
-	let string1; // Первая строка (время дня)
+	let string1; // Время дня)
 	if (hour >= 4 && hour < 12) {
 		string1 = "Доброе утро!";
 	} else if (hour >= 12 && hour < 17) {
@@ -79,15 +79,15 @@ const getTime = () => {
 	let timeId = "AM";
 	if (hour > 12) {
 		timeId = "PM";
-		hourFormat = hour - 12;
+		hourFormat = timeFormat(hour - 12);
 	}
 
 	const string3 = `Текущее время: ${hourFormat}:${minutesFormat}:${secundsFormat} ${timeId} (${hour} ${hourDecl} ${minutes} ${minutesDecl} и ${secunds} ${secundsDecl})`; // Время
 
-	// let dateStop = new Date(deadline).getTime();
-	// let dateNow = new Date().getTime();
-	// let timeRemaining = (dateStop - dateNow) / 1000;
-	// let days = Math.floor(timeRemaining / 3600 / 24);
+	let dateStop = new Date(`${year + 1}`).getTime();
+	let dateNow = new Date().getTime();
+	let days = Math.floor((dateStop - dateNow) / (3600000 * 24));
+	const string4 = `До Нового года осталось ${days} дней`;
 
 	// ${}
 
@@ -95,7 +95,7 @@ const getTime = () => {
 	// const string2 = dayOfMonthFormat + "." + monthFormat + "." + year + " - " + hourFormat + ":" + minutesFormat + ":" + secundsFormat;
 
 	// return [string1, string2, string3, string4];
-	return [string1, string2, string3];
+	return [string1, string2, string3, string4];
 };
 
 /* Отрисовываем время */
@@ -105,7 +105,7 @@ const renderTime = () => {
 	stringA.innerHTML = "<i>" + timeArray[0] + "</i>";
 	stringB.innerHTML = "<i>" + timeArray[1] + "</i>";
 	stringC.innerHTML = "<i>" + timeArray[2] + "</i>";
-	// stringA.innerHTML = "<i>" + timeArray[3] + "</i>";
+	stringD.innerHTML = "<i>" + timeArray[3] + "</i>";
 };
 
 // Запускаем :)
