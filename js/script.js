@@ -15,7 +15,6 @@ const changeText = (timeToDelay) => {
 	timeNow = new Date();
 	delay = timeNow.getTime() - timeSaved.getTime();
 	timeSaved = timeNow;
-	console.log("~ delay", delay);
 
 	if (isFirstStart) {
 		idTimer = setTimeout(printText, timeToDelay);
