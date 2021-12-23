@@ -23,11 +23,8 @@ const changeText = (timeToDelay) => {
 	}
 
 	if (delay < timeToDelay) {
-		console.log("true");
 		clearTimeout(idTimer);
 		idTimer = setTimeout(printText, timeToDelay);
-	} else {
-		console.log("false");
 	}
 };
 
