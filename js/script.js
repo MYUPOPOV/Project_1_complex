@@ -2,39 +2,66 @@
 const input = document.querySelector(".input_a");
 const p = document.querySelector(".paragraph_a");
 
-const changeText = () => {
+let timeNow = new Date();
+let timeSaved = new Date();
+let delay = 0;
+let isFirstStart = true;
+
+const printText = () => {
 	p.textContent = input.value;
 };
 
-const throttle = function (func, ms) {
-	let isThrottled = false,
-		savedArgs,
-		savedThis;
+const changeText = (timeToDelay) => {
+	timeNow = new Date();
+	delay = timeNow.getTime() - timeSaved.getTime();
+	timeSaved = timeNow;
+	console.log("~ delay", delay);
 
-	function wrapper() {
-		if (isThrottled) {
-			savedArgs = arguments;
-			savedThis = this;
-			return;
-		}
-
-		func.apply(this, arguments);
-
-		isThrottled = true;
-
-		setTimeout(function () {
-			isThrottled = false;
-			if (savedArgs) {
-				wrapper.apply(savedThis, savedArgs);
-				savedArgs = savedThis = null;
-			}
-		}, ms);
+	if (isFirstStart) {
+		idTimer = setTimeout(printText, timeToDelay);
+		isFirstStart = false;
 	}
 
-	return wrapper;
+	if (delay < timeToDelay) {
+		console.log("true");
+		clearTimeout(idTimer);
+		idTimer = setTimeout(printText, timeToDelay);
+	} else {
+		console.log("false");
+	}
 };
 
-input.addEventListener("input", throttle(changeText, 300));
+input.addEventListener("input", () => {
+	changeText(300);
+});
+
+// const throttle = function (func, ms) {
+// 	let isThrottled = false,
+// 		savedArgs,
+// 		savedThis;
+
+// 	function wrapper() {
+// 		if (isThrottled) {
+// 			savedArgs = arguments;
+// 			savedThis = this;
+// 			return;
+// 		}
+
+// 		func.apply(this, arguments);
+
+// 		isThrottled = true;
+
+// 		setTimeout(function () {
+// 			isThrottled = false;
+// 			if (savedArgs) {
+// 				wrapper.apply(savedThis, savedArgs);
+// 				savedArgs = savedThis = null;
+// 			}
+// 		}, ms);
+// 	}
+
+// 	return wrapper;
+// };
 
 /* Урок 16. Прототипы и классы 
 "use strict";
